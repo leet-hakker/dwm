@@ -61,11 +61,13 @@ static const Layout layouts[] = {
 static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 static const char *poweroptscmd[] = { "rofi", "-show", "p", "-modi", "p:rofi-power-menu", "font 'Nerd 16'", "-width", "20", "-lines", "6", NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *firefoxcmd[] = { BROWSER, NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,			XK_w,	   spawn,	   {.v = firefoxcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
