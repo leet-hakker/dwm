@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+
 #define TERMINAL "st"
 #define BROWSER "firefox"
 
@@ -9,6 +10,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
+
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -23,14 +25,23 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
+
+/* commands */
+static const char *roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *browsercmd[] = { BROWSER, NULL };
+
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
+
 	/* class      instance    title       tags mask     switchtotag    isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,             1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,             0,           -1 },
+
 };
 
 /* layout(s) */
@@ -57,11 +68,13 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+
 /* commands */
 static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 static const char *poweroptscmd[] = { "rofi", "-show", "p", "-modi", "p:rofi-power-menu", "font 'Nerd 16'", "-width", "20", "-lines", "6", NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *firefoxcmd[] = { BROWSER, NULL };
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -99,6 +112,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          {.v = poweroptscmd} },
+
 };
 
 /* button definitions */
