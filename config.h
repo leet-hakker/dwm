@@ -16,10 +16,14 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+
+static const char col_white[]       = "#ebdbb2";
+static const char col_black[]       = "#282828";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_black,  col_white  },
 };
 
 /* tagging */
@@ -30,7 +34,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const char *roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *browsercmd[] = { BROWSER, NULL };
-
+static const char *poweroptscmd[] = { "rofi", "-show", "p", "-modi", "p:rofi-power-menu", "font 'Nerd 16'", "-width", "20", "-lines", "6", NULL };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -69,18 +73,13 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 
-/* commands */
-static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
-static const char *poweroptscmd[] = { "rofi", "-show", "p", "-modi", "p:rofi-power-menu", "font 'Nerd 16'", "-width", "20", "-lines", "6", NULL };
-static const char *termcmd[]  = { TERMINAL, NULL };
-static const char *firefoxcmd[] = { BROWSER, NULL };
 
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,			XK_w,	   spawn,	   {.v = firefoxcmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
